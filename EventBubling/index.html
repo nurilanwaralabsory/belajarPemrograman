@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .hide {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Event bubling</h1>
+
+    <!-- <p onclick="alert('paragraf klik')">
+        <button onclick="alert('button click')">Click</button>
+    </p> -->
+
+    <div id="container">
+        Click to hide
+        <button id="changeColor">Change Color</button>
+    </div>
+
+    <script>
+        const button = document.querySelector('#changeColor');
+        const container = document.querySelector('#container');
+
+        button.addEventListener('click', (e) => {
+            container.style.backgroundColor = generateRandomColor();
+            e.stopPropagation();
+        })
+
+        container.addEventListener('click', () => {
+            container.classList.toggle('hide');
+        })
+
+
+
+        const generateRandomColor = () => {
+            const r = Math.floor(Math.random() * 255);
+            const g = Math.floor(Math.random() * 255);
+            const b = Math.floor(Math.random() * 255);
+
+            return `rgb(${r}, ${g}, ${b})`;
+        };
+    </script>
+</body>
+
+</html>

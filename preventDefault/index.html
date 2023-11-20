@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="" id="form">
+        <input type="text">
+        <button type="submit">Submit</button>
+    </form>
+
+    <ul id="notes"></ul>
+
+    <script>
+        const form = document.querySelector('#form');
+        const input = document.querySelector("input");
+        const note = document.querySelector('#notes');
+        const arr = [];
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const inputValue = input.value;
+
+            const newList = document.createElement('li');
+
+            newList.innerText = inputValue;
+
+            note.append(newList);
+            arr.push(inputValue);
+            input.value = '';
+        })
+
+        note.addEventListener('click', (e) => {
+            e.target.remove();
+        })
+
+    </script>
+</body>
+
+</html>
